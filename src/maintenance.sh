@@ -10,6 +10,7 @@ array[waarnemingen-dashboard]=git@github.com:Amsterdam/waarnemingen-dashboard.gi
 array[waarnemingen-boten]=git@github.com:Amsterdam/waarnemingen-boten.git
 array[kwiz-schuldhulpverlenings-monitor]=git@git.data.amsterdam.nl:Datapunt/kwiz-schuldhulpverlenings-monitor.git
 array[tellus]=git@github.com:Amsterdam/tellus.git
+array[blackspots]=git@github.com:Amsterdam/blackspots-backend.git
 
 for i in "${!array[@]}"
 do
