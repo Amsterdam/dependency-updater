@@ -1,1 +1,30 @@
-Initial README for Jeffrey :)
+
+# Opdrachten Team Maintenance
+
+This projects hosts the script we use to perform our bi-weekly maintenance. 
+
+Each project attached must follow our specific setup:
+- A make target `upgrade` must exist that updates the requirements to their latest versions.
+- A make target `build` must exist that builds the docker images.
+- A make target `test` must exist that runs the testcases. 
+
+Once these succeed a new commit is created with the changes and pushed to `feature/maintenance-%y-%m-%d`.
+
+## Installation
+
+Clone the repository
+
+```bash
+git clone git@git.data.amsterdam.nl:Datapunt/opdrachten-team-maintenance.git
+```
+
+Then create a virtual environment. The virtual environment can be empty, dependencies will be installed automatically by the maintenance script.
+
+## Usage
+
+Simply run the maintenance script: 
+
+```bash
+./maintenance.sh
+```
+
