@@ -1,6 +1,8 @@
+set -e 
 DATE=$(date +"%y-%m-%d")
 BRANCH=feature/maintenance-$DATE
 echo "$BRANCH"
+WORKDIR=workdir
 
 declare -A array
 array[bed-and-breakfast]=git@git.data.amsterdam.nl:Datapunt/bed-and-breakfast.git
@@ -14,6 +16,9 @@ array[kwiz-schuldhulpverlenings-monitor]=git@git.data.amsterdam.nl:Datapunt/kwiz
 array[tellus]=git@github.com:Amsterdam/tellus.git
 array[blackspots]=git@github.com:Amsterdam/blackspots-backend.git
 
+rm -rf $WORKDIR
+mkdir $WORKDIR
+pushd $WORKDIR
 for i in "${!array[@]}"
 do
     echo "key  : $i"
@@ -23,19 +28,25 @@ do
     git fetch 
     git co -B $BRANCH
     git reset --hard origin/master
-    make upgrade
+    make requirements
     make build
+    docker-compose down -v
     make test
     git add requirements.txt requirements_dev.txt
-    git commit -m "Maintenance run"
+    git commit -m "Maintenance run ${date}"
+    popd
+done
+popd
+
+rm -f prlist.txt
+for i in "${!array[@]}"
+do
+    pushd $i
+    gh pr create --fill
+    for num in `gh pr list -R ${array[$i]} --limit 999 2>/dev/null | awk '{print $1}'`; do
+        gh pr view -R ${array[$i]} $num 2>/dev/null >> prlist.txt;
+    done
     popd
 done
 
-for i in "${!array[@]}"
-do
-    echo "key  : $i"
-    echo "value: ${array[$i]}"
-    pushd $i
-    git push --set-upstream origin $BRANCH
-    popd
-done
+cat prlist.txt | egrep -iv 'labels|assignees|reviewers|projects|milestone|number|state|^$'
