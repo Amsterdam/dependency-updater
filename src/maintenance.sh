@@ -5,6 +5,7 @@ echo "$BRANCH"
 declare -A array
 array[bed-and-breakfast]=git@git.data.amsterdam.nl:Datapunt/bed-and-breakfast.git
 array[iiif-metadata-server]=git@github.com:Amsterdam/iiif-metadata-server.git
+array[iiif-auth-proxy]=git@github.com:Amsterdam/iiif-auth-proxy.git
 array[waarnemingen-voertuigen]=git@github.com:Amsterdam/waarnemingen-voertuigen.git
 array[waarnemingen-dashboard]=git@github.com:Amsterdam/waarnemingen-dashboard.git
 array[waarnemingen-boten]=git@github.com:Amsterdam/waarnemingen-boten.git
