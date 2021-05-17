@@ -16,6 +16,7 @@ array[kwiz-schuldhulpverlenings-monitor]=git@git.data.amsterdam.nl:Datapunt/kwiz
 array[tellus]=git@github.com:Amsterdam/tellus.git
 array[blackspots]=git@github.com:Amsterdam/blackspots-backend.git
 array[drf_amsterdam]=git@github.com:Amsterdam/drf_amsterdam.git
+array[masterlist]=git@github.com:Amsterdam/masterlist.git
 
 # disabled due to: https://datapunt.atlassian.net/browse/TAO-377
 # array[iiif-auth-proxy]=git@github.com:Amsterdam/iiif-auth-proxy.git
