@@ -20,11 +20,17 @@ git clone git@git.data.amsterdam.nl:Datapunt/opdrachten-team-maintenance.git
 
 Then create a virtual environment. The virtual environment can be empty, dependencies will be installed automatically by the maintenance script.
 
+The script also uses the github and gitlab clis to create PRs, install and setup these tools following the instructions
+here:
+
+https://cli.github.com/
+https://glab.readthedocs.io/en/latest/
+
 ## Usage
 
-Simply run the maintenance script: 
+Simply run the maintenance script, setting the SLACK_API_TOKEN env var (can be found in vault):
 
 ```bash
-./maintenance.sh
+SLACK_API_TOKEN=xxxx ./maintenance.py
 ```
 
