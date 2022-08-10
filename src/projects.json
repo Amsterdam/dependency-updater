@@ -1,0 +1,190 @@
+[
+  {
+    "name":  "bed-and-breakfast",
+    "git_uri": "git@git.data.amsterdam.nl:Datapunt/bed-and-breakfast.git",
+    "timetell": 21127,
+    "acceptance_pipeline": "https://ci.secure.amsterdam.nl/job/Opdrachten/job/Bed%20and%20Breakfast/job/Bed%20and%20Breakfast%20API/job/master/",
+    "production_pipeline": "https://ci.secure.amsterdam.nl/job/Opdrachten/job/Bed%20and%20Breakfast/job/Bed%20and%20Breakfast%20API/view/tags/",
+    "acceptance_urls": [
+      "https://acc.api.secure.amsterdam.nl/vergunningen/quota/kameromzettingen/dashboard/",
+      "https://acc.api.secure.amsterdam.nl/vergunningen/quota/bb/dashboard/"
+    ],
+    "production_urls": [
+      "https://api.secure.amsterdam.nl/vergunningen/quota/kameromzettingen/dashboard/",
+      "https://api.secure.amsterdam.nl/vergunningen/quota/bb/dashboard/"
+    ],
+    "auth": null
+  },
+  {
+    "name": "blackspots-backend",
+    "git_uri": "git@github.com:Amsterdam/blackspots-backend.git",
+    "timetell": 20305,
+    "acceptance_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/Blackspots/job/blackspots-backend/job/master/",
+    "production_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/Blackspots/job/blackspots-backend/view/tags/",
+    "acceptance_urls": [
+      "https://acc.wbakaart.amsterdam.nl/"
+    ],
+    "production_urls": [
+      "https://wbakaart.amsterdam.nl/"
+    ],
+    "auth": "keycloak"
+  },
+  {
+    "name": "iiif-auth-proxy",
+    "git_uri": "git@github.com:Amsterdam/iiif-auth-proxy.git",
+    "timetell": 21079,
+    "acceptance_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/iiif-auth-proxy/job/Deployments/job/master/",
+    "production_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/iiif-auth-proxy/job/Deployments/view/tags/",
+    "acceptance_urls": [
+      "https://acc.api.data.amsterdam.nl/iiif-metadata/bouwdossier/"
+    ],
+    "production_urls": [
+      "https://api.data.amsterdam.nl/iiif-metadata/bouwdossier/"
+    ],
+    "auth": null
+  },
+  {
+    "name": "iiif-metadata-server",
+    "git_uri": "git@github.com:Amsterdam/iiif-metadata-server.git",
+    "timetell": 21079,
+    "acceptance_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/iiif-metadata-server/job/iiif-metadata-server-pipeline/job/master/",
+    "production_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/iiif-metadata-server/job/iiif-metadata-server-pipeline/view/tags/",
+    "acceptance_urls": [
+      "https://acc.api.data.amsterdam.nl/iiif-metadata/bouwdossier/"
+    ],
+    "production_urls": [
+      "https://api.data.amsterdam.nl/iiif-metadata/bouwdossier/"
+    ],
+    "auth": null
+  },
+  {
+    "name": "kwiz-schuldhulpverlenings-monitor",
+    "git_uri": "git@git.data.amsterdam.nl:Datapunt/kwiz-schuldhulpverlenings-monitor.git",
+    "timetell": 20309,
+    "acceptance_pipeline": "https://ci.secure.amsterdam.nl/job/Opdrachten/job/SHVmonitor/job/kwiz-schuldhulpverlenings-monitor/job/master/",
+    "production_pipeline": "https://ci.secure.amsterdam.nl/job/Opdrachten/job/SHVmonitor/job/kwiz-schuldhulpverlenings-monitor/view/tags/",
+    "acceptance_urls": [
+        "https://acc.shvmonitor.amsterdam.nl"
+    ],
+    "production_urls": [
+        "https://shvmonitor.amsterdam.nl"
+    ],
+    "auth": "adw"
+  },
+  {
+    "name": "masterlist",
+    "git_uri": "git@github.com:Amsterdam/masterlist.git",
+    "timetell": 20119,
+    "acceptance_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/masterlist/job/masterlist-pipeline/job/master/",
+    "production_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/masterlist/job/masterlist-pipeline/view/tags/",
+    "acceptance_urls": [
+      "https://acc.masterlist.amsterdam.nl/admin/login/"
+    ],
+    "production_urls": [
+      "https://masterlist.amsterdam.nl/admin/login/"
+    ],
+    "auth": null
+  },
+  {
+    "name": "tellus",
+    "git_uri": "git@github.com:Amsterdam/tellus.git",
+    "timetell": 20302,
+    "acceptance_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/Tellus/job/master/",
+    "production_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/Tellus/view/tags/",
+    "acceptance_urls": [
+      "https://acc.api.data.amsterdam.nl/tellus/tellus/"
+    ],
+    "production_urls": [
+      "https://api.data.amsterdam.nl/tellus/tellus/"
+    ],
+    "auth": null
+  },
+  {
+    "name": "verkeersvergunningen",
+    "git_uri": "git@github.com:Amsterdam/verkeersvergunningen.git",
+    "timetell": 20302,
+    "acceptance_pipeline": "https://ci.secure.amsterdam.nl/job/Opdrachten/job/Verkeersvergunningen/job/Verkeersvergunningen/job/master/",
+    "production_pipeline": "https://ci.secure.amsterdam.nl/job/Opdrachten/job/Verkeersvergunningen/job/Verkeersvergunningen/view/tags/",
+    "acceptance_urls": [
+      "https://acc.api.secure.amsterdam.nl/verkeersvergunningen/status/health"
+    ],
+    "production_urls": [
+      "https://api.secure.amsterdam.nl/verkeersvergunningen/status/health"
+    ],
+    "auth": null
+  },
+  {
+    "name": "waarnemingen-boten",
+    "git_uri": "git@github.com:Amsterdam/waarnemingen-boten.git",
+    "timetell": 20309,
+    "acceptance_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/waarnemingen/job/Boten/job/boten-pipeline/job/master/",
+    "production_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/waarnemingen/job/Boten/job/boten-pipeline/view/tags/",
+    "acceptance_urls": [
+      "https://acc.api.data.amsterdam.nl/waarnemingen/boten/status/health"
+    ],
+    "production_urls": [
+      "https://api.data.amsterdam.nl/waarnemingen/boten/status/health"
+    ],
+    "auth": null
+  },
+  {
+    "name": "waarnemingen-dashboard",
+    "git_uri": "git@github.com:Amsterdam/waarnemingen-dashboard.git",
+    "timetell": 20221,
+    "acceptance_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/waarnemingen/job/Dashboard/job/dashboard-pipeline/job/master/",
+    "production_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/waarnemingen/job/Dashboard/job/dashboard-pipeline/view/tags/",
+    "acceptance_urls": [
+      "https://acc.api.data.amsterdam.nl/waarnemingen/dashboard/login"
+    ],
+    "production_urls": [
+      "https://api.data.amsterdam.nl/waarnemingen/dashboard/login"
+    ],
+    "auth": null
+  },
+  {
+    "name": "waarnemingen-mensen",
+    "git_uri": "git@github.com:Amsterdam/waarnemingen-mensen.git",
+    "timetell": 20221,
+    "acceptance_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/waarnemingen/job/Mensen/job/mensen/job/master/",
+    "production_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/waarnemingen/job/Mensen/job/mensen/view/tags/",
+    "acceptance_urls": [
+      "https://acc.api.data.amsterdam.nl/waarnemingen/mensen/status/health"
+    ],
+    "production_urls": [
+      "https://api.data.amsterdam.nl/waarnemingen/mensen/status/health"
+    ],
+    "auth": null
+  },
+  {
+    "name": "waarnemingen-voertuigen",
+    "git_uri": "git@github.com:Amsterdam/waarnemingen-voertuigen.git",
+    "timetell": 20275,
+    "acceptance_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/waarnemingen/job/Voertuigen/job/voertuigen-pipeline/job/master/",
+    "production_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/waarnemingen/job/Voertuigen/job/voertuigen-pipeline/view/tags/",
+    "acceptance_urls": [
+      "https://acc.api.data.amsterdam.nl/waarnemingen/voertuigen/status/health",
+      "https://acc.api.data.amsterdam.nl/waarnemingen/voertuigen/api/v1/vlogs/"
+    ],
+    "production_urls": [
+      "https://api.data.amsterdam.nl/waarnemingen/voertuigen/status/health",
+      "https://api.data.amsterdam.nl/waarnemingen/voertuigen/api/v1/vlogs/"
+    ],
+    "auth": null
+  },
+  {
+    "name": "sensoren-register",
+    "git_uri": "git@github.com:Amsterdam/iot-api.git",
+    "timetell": null,
+    "acceptance_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/sensoren-register/job/IoThings/job/master/",
+    "production_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/sensoren-register/job/IoThings/view/tags/",
+    "acceptance_urls": [
+      "https://acc.api.data.amsterdam.nl/iothings/admin/",
+      "https://acc.sensorenregister.amsterdam.nl/"
+    ],
+    "production_urls": [
+      "https://api.data.amsterdam.nl/iothings/admin/",
+      "https://sensorenregister.amsterdam.nl/"
+    ],
+    "auth": null
+  }
+]
