@@ -170,5 +170,21 @@
       "https://api.data.amsterdam.nl/waarnemingen/voertuigen/api/v1/vlogs/"
     ],
     "auth": null
+  },
+  {
+    "name": "sensoren-register",
+    "git_uri": "git@github.com:Amsterdam/iot-api.git",
+    "timetell": null,
+    "acceptance_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/sensoren-register/job/IoThings/job/master/",
+    "production_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/sensoren-register/job/IoThings/view/tags/",
+    "acceptance_urls": [
+      "https://acc.api.data.amsterdam.nl/iothings/admin/",
+      "https://acc.sensorenregister.amsterdam.nl/"
+    ],
+    "production_urls": [
+      "https://api.data.amsterdam.nl/iothings/admin/",
+      "https://sensorenregister.amsterdam.nl/"
+    ],
+    "auth": null
   }
 ]
