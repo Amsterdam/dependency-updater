@@ -5,16 +5,15 @@ import json
 import os
 import shutil
 from datetime import date
-from pathlib import Path
 from subprocess import check_output
+
 # 1st party
-from diff import post_package_updates_to_slack, git_diff, parse_diff
+from diff import git_diff, parse_diff, post_package_updates_to_slack
 from project import Project
+from settings import PROJECTS_JSON, WORKDIR
 
-
-PROJECTS_JSON = Path(__file__).parent / 'projects.json'
 PROJECTS = [Project(**project) for project in json.loads(PROJECTS_JSON.read_text())]
-WORKDIR = Path(__file__).parent / 'workdir'
+
 DATE = date.today().strftime("%Y-%m-%d")
 BRANCH = f"feature/maintenance-{DATE}"
 
@@ -22,6 +21,8 @@ package_changes = []
 
 shutil.rmtree(WORKDIR, ignore_errors=True)
 os.makedirs(WORKDIR)
+
+failed_projects = {}
 
 # Upgrade dependencies
 for project in PROJECTS:
@@ -33,7 +34,12 @@ for project in PROJECTS:
     diff = git_diff(project.cwd)
     package_changes.append((project, parse_diff(diff)))
     project.make('build')
-    project.make('test')
+    try:
+        project.make('test')
+        project.successful = True
+    except Exception as e:
+        failed_projects[project.name] = e
+        project.successful = False
     project.git('add', 'requirements.txt', 'requirements_dev.txt')
     project.git('commit', '-m', f'Maintenance run {DATE}')
     project.git('push', '-u', 'origin', '--force', BRANCH)

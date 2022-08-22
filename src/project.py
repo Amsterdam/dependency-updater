@@ -5,17 +5,17 @@ import urllib.parse
 import urllib.request
 from dataclasses import dataclass, field
 from datetime import date
-from functools import partial, cached_property
+from functools import cached_property, partial
 from pathlib import Path
-from subprocess import Popen, PIPE, CalledProcessError, check_output, STDOUT
-from sys import stdout, stderr
+from subprocess import PIPE, STDOUT, CalledProcessError, Popen, check_output
+from sys import stderr, stdout
 from threading import Lock, Thread
 from typing import List
+
+from settings import WORKDIR
+
 # 1st party
 from slack import slack
-
-
-WORKDIR = Path(__file__).parent / 'workdir'
 
 
 @dataclass
@@ -30,6 +30,7 @@ class Project:
     production_urls: List[str]
     auth: str
     pr_url: str = field(default='No pr', init=False)
+    successful: bool = False
 
     @property
     def url(self):
@@ -78,7 +79,7 @@ class Project:
     @property
     def production_urls_str(self):
         return '\n'.join(self.production_urls)
-    
+
     @property
     def cwd(self):
         return WORKDIR / self.name
@@ -94,7 +95,7 @@ class Project:
         process = Popen(args, stdout=PIPE, stderr=STDOUT, cwd=self.cwd)
 
         for line in process.stdout:
-            print(f'{self.name}> {line}')
+            print(f'{self.name}> {line.decode()}')
 
         process.communicate()
         if process.returncode:
@@ -105,8 +106,10 @@ class Project:
             output = check_output(['gh', 'pr', 'create', '--fill'], cwd=self.cwd)
             self.pr_url = output.decode().splitlines()[-1]
         elif 'git.data.amsterdam.nl' in self.url:
-           output = check_output(['glab', 'mr', 'create', '--fill', '--yes'], cwd=self.cwd)
-           self.pr_url = output.decode().splitlines()[0]
+            output = check_output(
+                ['glab', 'mr', 'create', '--fill', '--yes'], cwd=self.cwd
+            )
+            self.pr_url = output.decode().splitlines()[0]
         else:
             print(f"Ik weet niet hoe ik een PR moet maken voor {self.url}")
 
@@ -114,9 +117,19 @@ class Project:
         message_id = slack(self.name)
 
         slack_thread = partial(slack, thread=message_id)
+        if not self.successful:
+            slack_thread('== FAILED ==', 'project failed to build', ':boom:')
         slack_thread('1. Review Pull Request', self.pr_url, ':eyes:')
-        slack_thread('2. Release Naar Acceptatie (merge naar master)', self.pr_url, ':twisted_rightwards_arrows:')
-        slack_thread('3. Controleer Acceptatie Deployment Job', self.acceptance_pipeline, ':jenkins_ci:')
+        slack_thread(
+            '2. Release Naar Acceptatie (merge naar master)',
+            self.pr_url,
+            ':twisted_rightwards_arrows:',
+        )
+        slack_thread(
+            '3. Controleer Acceptatie Deployment Job',
+            self.acceptance_pipeline,
+            ':jenkins_ci:',
+        )
         slack_thread('4. Controleer Acceptatie', self.acceptance_urls_str, ':rocket:')
         slack_thread('5. Release Naar Productie (tag versie)', self.tag_url, ':label:')
         slack_thread(
