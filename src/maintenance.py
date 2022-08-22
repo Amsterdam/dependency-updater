@@ -33,8 +33,8 @@ for project in PROJECTS:
     project.make('requirements')
     diff = git_diff(project.cwd)
     package_changes.append((project, parse_diff(diff)))
-    project.make('build')
     try:
+        project.make('build')
         project.make('test')
         project.successful = True
     except Exception as e:
