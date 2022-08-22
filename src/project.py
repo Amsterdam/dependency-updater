@@ -128,9 +128,9 @@ class Project:
         slack_thread(
             '3. Controleer Acceptatie Deployment Job',
             self.acceptance_pipeline,
-            ':jenkins_ci:',
+            ':jenkins-acc:',
         )
-        slack_thread('4. Controleer Acceptatie', self.acceptance_urls_str, ':rocket:')
+        slack_thread('4. Controleer Acceptatie', self.acceptance_urls_str, ':release-acc:')
         slack_thread('5. Release Naar Productie (tag versie)', self.tag_url, ':label:')
         slack_thread(
             '6. Controleer Productie Deployment Job',
