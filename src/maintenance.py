@@ -33,13 +33,14 @@ for project in PROJECTS:
     project.make('requirements')
     diff = git_diff(project.cwd)
     package_changes.append((project, parse_diff(diff)))
-    project.make('build')
     try:
+        project.make('build')
         project.make('test')
         project.successful = True
     except Exception as e:
         failed_projects[project.name] = e
         project.successful = False
+    project.make('clean')
     project.git('add', 'requirements.txt', 'requirements_dev.txt')
     project.git('commit', '-m', f'Maintenance run {DATE}')
     project.git('push', '-u', 'origin', '--force', BRANCH)
