@@ -12,7 +12,7 @@ def slack(
     thread=None,
     channel=environ.get('SLACK_CHANNEL', 'kamer-213-backend'),
     url=environ.get('SLACK_API_URL', 'https://www.slack.com/api/chat.postMessage'),
-    token=environ.get("SLACK_API_TOKEN"),
+    token=environ["SLACK_API_TOKEN"],
     sleep=0.25,
 ):
     """
