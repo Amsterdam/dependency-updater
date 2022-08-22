@@ -115,10 +115,15 @@ def post_package_updates_to_slack(project_package_changes: Iterable[Tuple[Projec
                 messages.append((package_change.package, icon_emoji, message, list(group)))
 
     if messages:
-        slack('--------------------------------')
+        slack('---------------------------------')
         for package, icon_emoji, message, group in sorted(messages):
             message_id = slack(header=f'{package} | {message}', icon_emoji=icon_emoji)
             slack_thread = partial(slack, thread=message_id)
             slack_thread(text='\n'.join(project for package_update, project in group))
             slack_thread(text=f'https://pypi.org/project/{package}/#history')
-        slack('--------------------------------')
+        slack('---------------------------------')
+    else:
+        slack('---------------------------------')
+        slack('No major upgrades to dependencies')
+        slack('---------------------------------')
+
