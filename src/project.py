@@ -95,7 +95,7 @@ class Project:
         process = Popen(args, stdout=PIPE, stderr=STDOUT, cwd=self.cwd)
 
         for line in process.stdout:
-            print(f'{self.name}> {line.decode()}')
+            print(f'{self.name}> {line.decode()}', end='')
 
         process.communicate()
         if process.returncode:
