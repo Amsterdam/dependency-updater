@@ -40,6 +40,7 @@ for project in PROJECTS:
     except Exception as e:
         failed_projects[project.name] = e
         project.successful = False
+    project.make('clean')
     project.git('add', 'requirements.txt', 'requirements_dev.txt')
     project.git('commit', '-m', f'Maintenance run {DATE}')
     project.git('push', '-u', 'origin', '--force', BRANCH)
