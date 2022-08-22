@@ -172,7 +172,7 @@
     "auth": null
   },
   {
-    "name": "sensoren-register",
+    "name": "iot-api",
     "git_uri": "git@github.com:Amsterdam/iot-api.git",
     "timetell": null,
     "acceptance_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/sensoren-register/job/IoThings/job/master/",
