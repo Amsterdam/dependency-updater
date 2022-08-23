@@ -23,8 +23,8 @@ Then create a virtual environment. The virtual environment can be empty, depende
 The script also uses the github and gitlab clis to create PRs, install and setup these tools following the instructions
 here:
 
-https://cli.github.com/
-https://glab.readthedocs.io/en/latest/
+* https://cli.github.com/
+* https://glab.readthedocs.io/en/latest/
 
 ## Usage
 
@@ -33,4 +33,28 @@ Simply run the maintenance script, setting the SLACK_API_TOKEN env var (can be f
 ```bash
 SLACK_API_TOKEN=xxxx ./maintenance.py
 ```
+
+After upgrading dependencies, building and testing the script will post a summary of the dependencies
+with major upgrades and create a number of slack threads (one for each project). In each thread is a
+list of actions that should be completed, these actions can be completed amongst the team. In the 
+channel we use 'reactions' to represent the status of the  project, with reactions often relating
+to the actions in the thread...
+
+![Data import](threads.png)
+
+The following reactions are frequently used...
+
+| Reaction                      | Meaning                                                                                                        |
+|-------------------------------|----------------------------------------------------------------------------------------------------------------|
+| `:eyes:`                      | I am working on this (or upload your own emoticon as shown in the screenshot above)                            |
+| `:white_tick:`                | PR has been approved                                                                                           |
+| `:thumbsup:`                  | Checked, but cannot approve since I am the author of the PR                                                    |
+| `:twisted_rightwards_arrows:` | Project is merged to master (and so the project is being deployed to acc)                                      |
+| `:jenkins-acc:`               | The project has been succesfully deployed to acceptance                                                        |
+| `:release-acc:`               | I have checked the deployment in acceptance                                                                    |
+| `:label:`                     | Tag has been created (and so the project is being deployed to production)                                      |
+| `:jenkins_ci:`                | The project has been succesfully deployed to production                                                        |
+| `:rocket:`                    | I have checked the deployment in production                                                                    |
+| `:boom:`                      | Tests are failing                                                                                              |
+| `:x:`                         | Skip this project (for example if there are changes in master that are not ready to be deployed to production) |
 
