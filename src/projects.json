@@ -18,7 +18,7 @@
   {
     "name": "blackspots-backend",
     "git_uri": "git@github.com:Amsterdam/blackspots-backend.git",
-    "timetell": 20305,
+    "timetell": 22099,
     "acceptance_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/Blackspots/job/blackspots-backend/job/master/",
     "production_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/Blackspots/job/blackspots-backend/view/tags/",
     "acceptance_urls": [
@@ -60,7 +60,7 @@
   {
     "name": "kwiz-schuldhulpverlenings-monitor",
     "git_uri": "git@git.data.amsterdam.nl:Datapunt/kwiz-schuldhulpverlenings-monitor.git",
-    "timetell": 20309,
+    "timetell": 21182,
     "acceptance_pipeline": "https://ci.secure.amsterdam.nl/job/Opdrachten/job/SHVmonitor/job/kwiz-schuldhulpverlenings-monitor/job/master/",
     "production_pipeline": "https://ci.secure.amsterdam.nl/job/Opdrachten/job/SHVmonitor/job/kwiz-schuldhulpverlenings-monitor/view/tags/",
     "acceptance_urls": [
@@ -116,7 +116,7 @@
   {
     "name": "waarnemingen-boten",
     "git_uri": "git@github.com:Amsterdam/waarnemingen-boten.git",
-    "timetell": 20309,
+    "timetell": 22067,
     "acceptance_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/waarnemingen/job/Boten/job/boten-pipeline/job/master/",
     "production_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/waarnemingen/job/Boten/job/boten-pipeline/view/tags/",
     "acceptance_urls": [
@@ -130,7 +130,7 @@
   {
     "name": "waarnemingen-dashboard",
     "git_uri": "git@github.com:Amsterdam/waarnemingen-dashboard.git",
-    "timetell": 20221,
+    "timetell": 22067,
     "acceptance_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/waarnemingen/job/Dashboard/job/dashboard-pipeline/job/master/",
     "production_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/waarnemingen/job/Dashboard/job/dashboard-pipeline/view/tags/",
     "acceptance_urls": [
@@ -144,7 +144,7 @@
   {
     "name": "waarnemingen-mensen",
     "git_uri": "git@github.com:Amsterdam/waarnemingen-mensen.git",
-    "timetell": 20221,
+    "timetell": 22067,
     "acceptance_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/waarnemingen/job/Mensen/job/mensen/job/master/",
     "production_pipeline": "https://ci.data.amsterdam.nl/job/opdrachten-team/job/waarnemingen/job/Mensen/job/mensen/view/tags/",
     "acceptance_urls": [
