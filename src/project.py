@@ -32,6 +32,7 @@ class Project:
     pr_url: str = field(default='No pr', init=False)
     successful: bool = False
     enabled: bool = True
+    error: bool = False
 
     @property
     def url(self):
@@ -115,6 +116,7 @@ class Project:
             else:
                 print(f"Ik weet niet hoe ik een PR moet maken voor {self.url}")
         except CalledProcessError as e:
+            self.error = True
             print(f'\033[91m Error Bij het maken van een PR voor {self.name} \033[0m')
             print(f'\033[91m Error: {e} \033[0m')
             print(f'\033[91m Skipping {self.name} \033[0m')
@@ -123,6 +125,10 @@ class Project:
         message_id = slack(self.name)
 
         slack_thread = partial(slack, thread=message_id)
+        if self.error:
+            slack_thread(f'Kon geen PR maken voor het project: {self.name}')
+            return
+
         if not self.successful:
             slack_thread('== FAILED ==', 'project failed to build', ':boom:')
         slack_thread('1. Review Pull Request', self.pr_url, ':eyes:')
