@@ -33,6 +33,7 @@ Simply run the maintenance script, setting the SLACK_API_TOKEN env var (can be f
 ```bash
 SLACK_API_TOKEN=xxxx ./maintenance.py
 ```
+You can run "Make name={project_name} run or ./maintenance.py {projectname}" to only run one specific project for the maintenance check
 
 After upgrading dependencies, building and testing the script will post a summary of the dependencies
 with major upgrades and create a number of slack threads (one for each project). In each thread is a
@@ -57,4 +58,7 @@ The following reactions are frequently used...
 | `:rocket:`                    | I have checked the deployment in production                                                                    |
 | `:boom:`                      | Tests are failing                                                                                              |
 | `:x:`                         | Skip this project (for example if there are changes in master that are not ready to be deployed to production) |
+
+
+
 

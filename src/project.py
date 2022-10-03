@@ -103,16 +103,21 @@ class Project:
             raise CalledProcessError(process.returncode, args)
 
     def create_pr(self):
-        if 'github' in self.url:
-            output = check_output(['gh', 'pr', 'create', '--fill'], cwd=self.cwd)
-            self.pr_url = output.decode().splitlines()[-1]
-        elif 'git.data.amsterdam.nl' in self.url:
-            output = check_output(
-                ['glab', 'mr', 'create', '--fill', '--yes'], cwd=self.cwd
-            )
-            self.pr_url = output.decode().splitlines()[0]
-        else:
-            print(f"Ik weet niet hoe ik een PR moet maken voor {self.url}")
+        try:
+            if 'github' in self.url:
+                output = check_output(['gh', 'pr', 'create', '--fill'], cwd=self.cwd)
+                self.pr_url = output.decode().splitlines()[-1]
+            elif 'git.data.amsterdam.nl' in self.url:
+                output = check_output(
+                    ['glab', 'mr', 'create', '--fill', '--yes'], cwd=self.cwd
+                )
+                self.pr_url = output.decode().splitlines()[0]
+            else:
+                print(f"Ik weet niet hoe ik een PR moet maken voor {self.url}")
+        except CalledProcessError as e:
+            print(f'\033[91m Error Bij het maken van een PR voor {self.name} \033[0m')
+            print(f'\033[91m Error: {e} \033[0m')
+            print(f'\033[91m Skipping {self.name} \033[0m')
 
     def send_to_slack(self):
         message_id = slack(self.name)
