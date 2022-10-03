@@ -58,7 +58,3 @@ The following reactions are frequently used...
 | `:rocket:`                    | I have checked the deployment in production                                                                    |
 | `:boom:`                      | Tests are failing                                                                                              |
 | `:x:`                         | Skip this project (for example if there are changes in master that are not ready to be deployed to production) |
-
-
-
-
