@@ -3,4 +3,4 @@ test:
 	glab auth status -h git.data.amsterdam.nl
 
 run: test
-	python src/maintenance.py
+	python src/maintenance.py $(name)

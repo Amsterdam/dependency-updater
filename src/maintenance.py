@@ -2,6 +2,7 @@
 
 # standard library
 import json
+import sys
 import os
 import shutil
 from datetime import date
@@ -24,8 +25,21 @@ os.makedirs(WORKDIR)
 
 failed_projects = {}
 
+try:
+    only_run = sys.argv[1]
+except IndexError:
+    only_run = None
+
+if only_run:
+    PROJECTS = list(filter(lambda x: x.name == only_run, PROJECTS))
+    if len(PROJECTS) == 0:
+        print('No project found')
+
 # Upgrade dependencies
 for project in PROJECTS:
+    if not project.enabled:
+        print(f'\33[32m project {project.name} is disabled \033[33m')
+        continue
     check_output(['git', 'clone', project.git_uri], cwd=WORKDIR)
     project.git('checkout', 'master')
     project.git('checkout', '-B', BRANCH)
@@ -50,5 +64,7 @@ post_package_updates_to_slack(package_changes)
 
 # Create prs
 for project in PROJECTS:
+    if not project.enabled:
+        continue
     project.create_pr()
     project.send_to_slack()
