@@ -60,11 +60,11 @@ for project in PROJECTS:
     project.git('push', '-u', 'origin', '--force', BRANCH)
 
 # Post package upgrades to slack
-# post_package_updates_to_slack(package_changes)
+post_package_updates_to_slack(package_changes)
 
 # Create prs
 for project in PROJECTS:
     if not project.enabled:
         continue
     project.create_pr()
-    # project.send_to_slack()
+    project.send_to_slack()
