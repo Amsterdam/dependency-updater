@@ -26,6 +26,8 @@ failed_projects = {}
 
 # Upgrade dependencies
 for project in PROJECTS:
+    if not project.enabled:
+        continue
     check_output(['git', 'clone', project.git_uri], cwd=WORKDIR)
     project.git('checkout', 'master')
     project.git('checkout', '-B', BRANCH)
@@ -50,5 +52,7 @@ post_package_updates_to_slack(package_changes)
 
 # Create prs
 for project in PROJECTS:
+    if not project.enabled:
+        continue
     project.create_pr()
     project.send_to_slack()

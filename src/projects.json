@@ -111,7 +111,8 @@
     "production_urls": [
       "https://api.secure.amsterdam.nl/verkeersvergunningen/status/health"
     ],
-    "auth": null
+    "auth": null,
+    "enabled": false
   },
   {
     "name": "waarnemingen-boten",

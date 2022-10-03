@@ -31,6 +31,7 @@ class Project:
     auth: str
     pr_url: str = field(default='No pr', init=False)
     successful: bool = False
+    enabled: bool = True
 
     @property
     def url(self):
