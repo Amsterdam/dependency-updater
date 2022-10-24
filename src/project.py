@@ -150,3 +150,4 @@ class Project:
             ':jenkins_ci:',
         )
         slack_thread('7. Controleer Productie', self.production_urls_str, ':rocket:')
+        slack_thread('8. Timetell code:', self.timetell, ':clock1:')
