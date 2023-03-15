@@ -1,4 +1,3 @@
-# standard library
 import re
 import shlex
 import urllib.parse
@@ -8,13 +7,7 @@ from datetime import date
 from functools import cached_property, partial
 from pathlib import Path
 from subprocess import PIPE, STDOUT, CalledProcessError, Popen, check_output
-from sys import stderr, stdout
-from threading import Lock, Thread
 from typing import List
-
-from settings import WORKDIR
-
-# 1st party
 from slack import slack
 
 
@@ -28,7 +21,7 @@ class Project:
     production_pipeline: str
     acceptance_urls: List[str]
     production_urls: List[str]
-    auth: str
+    workdir: Path
     pr_url: str = field(default='No pr', init=False)
     successful: bool = False
     enabled: bool = True
@@ -84,7 +77,7 @@ class Project:
 
     @property
     def cwd(self):
-        return WORKDIR / self.name
+        return self.workdir / self.name
 
     def git(self, *args):
         self.subprocess('git', *args)
